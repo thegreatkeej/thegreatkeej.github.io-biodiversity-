@@ -3,7 +3,10 @@ body {
 }
 
 
-h4,
+h4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black
+},
 h5,
 h6 {
   font-weight: 100;
@@ -30,10 +33,10 @@ section {
   padding: 6rem 0;
 }
 
-section h2 {
+h3 {
   font-size: 2.25rem;
   line-height: 2rem;
-  
+  color: rgb(230, 123, 23);
 }
 
 @media (min-width: 992px) {
@@ -63,10 +66,11 @@ section h2 {
 
 #mainNav .navbar-nav {
   letter-spacing: 0.0625rem;
-
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
   background-color: #fff;
-  color:#ddf509;
-
+  
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link {
@@ -106,7 +110,7 @@ header.masthead h2 {
   }
   header.masthead h1 {
       font-size: 4.75em;
-      line-height: 4rem;
+      line-height: 6rem;
   }
   header.masthead h2 {
       font-size: 1.75em;
@@ -115,9 +119,12 @@ header.masthead h2 {
 
 body {
 
-    color: #1f56ee;
+  color: #9304f3;
   }
 
+  p {
+    color:rgb(47, 0, 255)
+  }
   .jumbotron {
     background-image: url("bacterial-shapes-thinkstock.jpg");
     background-size: 10% 10%;

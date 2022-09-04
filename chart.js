@@ -65,6 +65,9 @@ function buildCharts(sample) {
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var result = sampleData.filter(sampleObj => sampleObj.id == sample)[0];
     
+    var metadata = data.metadata;
+    // Filter the data for the object with the desired sample number
+    var resultW = metadata.filter(sampleObj => sampleObj.id == sample)[0];
     
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -112,21 +115,29 @@ function buildCharts(sample) {
     Plotly.newPlot("bubble", [trace2], layout2); 
 
     // 4. Create the trace for the gauge chart.
-    var wfreq = metadata.wfreq;
+    var wfreq = resultW.wfreq;
     var gaugeData = [
       
       {
         type: "indicator",
         mode: "gauge+number+delta",
         value: wfreq,
-        title: { text: "Belly Button Washing Frequency" },
-          subtitle: { text: "Scrubs per Week"},
+        title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs per Week<br>" },
+
+          
         gauge: {
-        axis: { range: [null, 10], tickwidth: 2, tickcolor: black },
-        bar: { color: wfreq },
+        axis: { range: [null, 10], tickwidth: 2, tickcolor: "black" },
+        bar: { color: "black" },
         bgcolor: "white",
         borderwidth: 2,
         bordercolor: "gray",
+        steps: [
+          { range: [0, 2], color: "red" },
+          { range: [2, 4], color: "orange" },
+          { range: [4, 6], color: "yellow" },
+          { range: [6, 8], color: "limeGreen" },
+          { range: [8, 10], color: "green" }
+        ],
         threshold: {
           line: { color: "red", width: 4 },
           thickness: 0.75,
@@ -139,12 +150,7 @@ function buildCharts(sample) {
     var layout3 = {
       width: 500,
       height: 400,
-      redFrom: 0, redTo: 2,
-      orangeFrom: 2, orangeTo: 4,
-      yellowFrom: 4, yellowTo: 6,
-      limeGreenFrom: 6, limeGreenTo: 8,
-      greenFrom: 8, greenTo: 10,
-    
+     
     };
     
     Plotly.newPlot("gauge", gaugeData, layout3);
